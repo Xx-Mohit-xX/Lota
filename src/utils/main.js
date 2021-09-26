@@ -28,7 +28,7 @@ require("dotenv").config()
     eventFiles.map((value) => require(value));
 
     // database
-    connect(process.env.db)
+    connect(process.env.DB)
     .then(() => {console.log(`Connected to database`)})
     .catch((err) => {console.log(`Failed to connect to database`); console.error(err)})
 

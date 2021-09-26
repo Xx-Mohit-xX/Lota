@@ -24,10 +24,15 @@ module.exports = {
         }
 
         message.channel.bulkDelete(message_amount, true)
-        .then((msgs) => {
-            return message.channel.send({content: `${client.custom_emojis.tick} • I have cleared ${msgs.size}/${message_amount} messages!`})
+        .then(async (msgs) => {
+            
+            const theMessage = await  message.channel.send({content: `${client.custom_emojis.tick} • I have cleared ${msgs.size}/${message_amount} messages!`})
+            setTimeout(() => {
+            theMessage.delete().catch(() => {})
+            }, 5000);
         }).catch((er) => {
             return message.channel.send({content: `${client.custom_emojis.warning} • There was an error clearing these messages!!`})
         })
+      
     }
 }

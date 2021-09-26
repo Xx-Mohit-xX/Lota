@@ -6,9 +6,9 @@ const fs = require('fs')
 const ClientSchema = require(`../../schemas/Client`)
 
 client.on('ready', async () => {
-    const clientschem = await ClientSchema.findOne({clientId: client.id})
+    const clientschem = await ClientSchema.findOne({clientId: client.user.id})
     if(!clientschem) {
-        await ClientSchema.create({clientId: client.id})
+        await ClientSchema.create({clientId: client.user.id})
     }
     console.log(`${client.user.username} is now online.`)
     let totalCommands = 0

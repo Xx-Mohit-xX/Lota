@@ -2,7 +2,7 @@ const { Client, Message, MessageEmbed } = require("discord.js")
 
 module.exports = {
     name: "wallpaper",
-    description: "Get a wallpaper!",
+    description: "Get a wallpaper! (MAY CONTAIN SEMI LEWD IMAGES)",
     category: "Interaction",
     // owner: true,
     // aliases: [],

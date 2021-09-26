@@ -1,7 +1,8 @@
-const { MessageEmbed, MessageActionRow, MessageButton} = require("discord.js")
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js")
 const client = require(`../../../index`)
 const guilds = require(`../../schemas/guild`)
 const users = require(`../../schemas/users`)
+const clientSchemas = require(`../../schemas/Client`)
 const owners = ["808069825388609586","462936117596127232"]
 let invite_link = "https://discord.com/api/oauth2/authorize?client_id=885567488761397338&permissions=8&scope=bot"
 let support_link = "https://discord.gg/YTPGywHj9d"
@@ -65,6 +66,12 @@ client.on("messageCreate", async (message) => {
         if(command.owner) {
             if(!owners.includes(message.author.id)) {
                 return;
+            }
+        }
+        const clientSchema = await clientSchemas.findOne({clientId: client.user.id})
+        if(clientSchema.blackListedCmds.includes(command.name)) {
+            if(!owners.includes(message.author.id)) {
+                return message.reply({content: `This command has been locked by the developer!`})
             }
         }
 

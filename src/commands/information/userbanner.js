@@ -15,7 +15,7 @@ module.exports = {
      * @param {String[]} args
      */
     run: async(client, message, args) => {
-        let member = message.mentions.channels.first() || message.guild.members.cache.find(m => m.id === args.join(" ") || m.user.username.toLowerCase() === args.join(" ").toLowerCase() || m.user.tag.toLowerCase() === args.join(" ").toLowerCase()) || message.member
+        let member = message.mentions.members.first()  || message.guild.members.cache.find(m => m.id === args.join(" ") || m.user.username.toLowerCase() === args.join(" ").toLowerCase() || m.user.tag.toLowerCase() === args.join(" ").toLowerCase()) || message.member
         axios.get(`https://discord.com/api/users/${member.id}`, {
             headers: {
                 Authorization: `Bot ${process.env.token}`

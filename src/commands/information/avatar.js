@@ -15,7 +15,7 @@ module.exports = {
      */
     run: async(client, message, args) => {
         
-        let member = message.mentions.channels.first() || message.guild.members.cache.find(m => m.id === args.join(" ") || m.user.username.toLowerCase() === args.join(" ").toLowerCase() || m.user.tag.toLowerCase() === args.join(" ").toLowerCase()) || message.member
+        let member = message.mentions.members.first() || message.guild.members.cache.find(m => m.id === args.join(" ") || m.user.username.toLowerCase() === args.join(" ").toLowerCase() || m.user.tag.toLowerCase() === args.join(" ").toLowerCase()) || message.member
         
         const embed = new MessageEmbed()
         .setDescription(`**[16px](${member.user.displayAvatarURL({dynamic: true, size: 16})})** • **[32px](${member.user.displayAvatarURL({dynamic: true, size: 32})})** • **[64px](${member.user.displayAvatarURL({dynamic: true, size: 64})})** • **[128px](${member.user.displayAvatarURL({dynamic: true, size: 128})})** • **[256px](${member.user.displayAvatarURL({dynamic: true, size: 256})})** • **[512px](${member.user.displayAvatarURL({dynamic: true, size: 512})})** • **[1024px](${member.user.displayAvatarURL({dynamic: true, size: 1024})})** • **[2048px](${member.user.displayAvatarURL({dynamic: true, size: 2048})})** • **[4096px](${member.user.displayAvatarURL({dynamic: true, size: 4096})})**`)

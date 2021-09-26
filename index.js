@@ -37,4 +37,4 @@ client.custom_emojis = {
 }
 client.utils = require(`./src/utils/main.js`)
 require("./src/utils/main").loadFeatures(client)
-client.login(process.env.token)
+client.login(process.env.TOKEN)
